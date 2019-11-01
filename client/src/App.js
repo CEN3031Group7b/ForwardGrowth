@@ -11,13 +11,14 @@ const App = () => {
   return (
     <div>
       <Header />
+      
       <Switch>
-        <Route exact path="/Home" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/">
-          <Redirect to="/Home" />
+          <Redirect to="/home" />
         </Route>
-        <Route exact path="/About" component={About}/>
-        <Route exact path="/Blog" component={Blog}/>
+        <Route exact path="/about" component={About}/>
+        <Route exact path="/blog" component={Blog}/>
         <Route component={NotFound}/>
       </Switch>
     </div>

@@ -1,34 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import { slide as Menu } from 'react-burger-menu' //https://www.npmjs.com/package/react-burger-menu
+import logo from '../../assets/OrchardGroveLogo.png';
+
 
 const Header = () => {
     return (
-        <div className='topnav'>
-            {/* Logo */}
-            <Link id="logo-link" to="/">
-                <img className="topnav-logo" src={"/logo192.png"} alt="React logo" />
-            </Link>
+        <Menu customBurgerIcon={ <img src= {logo} /> }>
+        <a id="home" className="menu-item" href="/">Home</a>
+        <a id="about" className="menu-item" href="/about">About</a>
+        <a id="contact" className="menu-item" href="/blog">Blog</a>
+      </Menu>
 
-            {/* Page Links */}
-            <div className="topnav-right">
-                {/* <Link className="topnav-link" to='/Register'>Sign in</Link>
-                <Link className="topnav-link" to='/projects'>Projects</Link>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://www.facebook.com/groups/ufosc/events/?source=4&action_history=null&filter=calendar">
-                    Events
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
-                </a>
-                <a className="topnav-link" target='_blank' rel="noopener noreferrer" href="https://github.com/ufosc/club-resources">
-                    Resources
-                    <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6 right-4"></i>
-                </a>
-                <Link className="topnav-link" to="/about">About</Link> */}
+      //Below is old code for the top navigation default from the MERN Template 
+        // <div className='topnav'>
+        //         <Link className="topnav-link" to="/about">About</Link> */}
 
-                <Link className="topnav-link" to='/Home'>Home</Link>
-                <Link className="topnav-link" to='/About'>About the Team</Link>
-                <Link className="topnav-link" to="/Blog">Blog Posts</Link>
-            </div>
-        </div>
+        //         <Link className="topnav-link" to='/Home'>Home</Link>
+        //         <Link className="topnav-link" to='/About'>About the Team</Link>
+        //         <Link className="topnav-link" to="/Blog">Blog Posts</Link>
+        //     </div>
+        // </div>
     )
 }
 
