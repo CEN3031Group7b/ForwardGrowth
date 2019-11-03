@@ -14,7 +14,18 @@ function Blog() {
 			  screenName="elonmusk"
 			  options={{height: 500, width: 500}}
 			/>
-            
+            <InstagramEmbed
+			  url='https://www.instagram.com/elonmusk/?hl=en'
+			  maxWidth={500}
+			  hideCaption={false}
+			  containerTagName='div'
+			  protocol=''
+			  injectScript
+			  onLoading={() => {}}
+			  onSuccess={() => {}}
+			  onAfterRender={() => {}}
+			  onFailure={() => {}}
+			/>
         </div>
     );
 }

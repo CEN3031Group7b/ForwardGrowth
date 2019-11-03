@@ -8,6 +8,8 @@ This application will be a landing page and introductory page for a gaming appli
 npm install react-burger-menu --save
 
 npm install --save react-twitter-embed
+
+npm i react-instagram-embed
 ## Available Scripts
 
 In the project directory, you can run:
