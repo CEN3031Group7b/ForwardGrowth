@@ -27,7 +27,7 @@ module.exports.init = () => {
     app.use(bodyParser.json());
 
     app.post("/api/send_email", function (req, res) {
-        //mail.request(req,res);
+        mail.request(req,res);
 
 
 
