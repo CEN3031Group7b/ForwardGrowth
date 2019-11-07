@@ -25,6 +25,12 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    app.post("/api/send_email", function (req, res) {
+        //mail.request(req,res);
+
+
+
+    });
     // add a router
     app.use('/api/example', exampleRouter);
 
