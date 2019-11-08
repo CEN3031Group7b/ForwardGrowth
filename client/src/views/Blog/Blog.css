@@ -5,12 +5,9 @@
   float: left;
   width: 50%;
   padding: 10px;
-  align-content: center;
-}
-.columnInsta {
-	left: 50%;
-    margin-right: -50%;
-}
+  display: inline-block;
+  text-align: center
+  }
 .row:after {
   content: "";
   display: table;

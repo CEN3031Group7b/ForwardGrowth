@@ -19,10 +19,9 @@ function Blog() {
 			  </div>
 			  <div class="column">
 				<h2>Check us out on Instagram</h2>
-				<div class="columnInsta">
 					<InstagramEmbed
 					  url='https://www.instagr.am/p/B4S2p2vBE5L'
-					  maxWidth={500}
+					  maxWidth={600}
 					  hideCaption={false}
 					  containerTagName='div'
 					  protocol=''
@@ -32,7 +31,6 @@ function Blog() {
 					  onAfterRender={() => {}}
 					  onFailure={() => {}}
 					/>
-				</div>
 			  </div>
 			</div>
         </div>
