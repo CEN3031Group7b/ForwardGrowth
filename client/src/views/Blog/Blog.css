@@ -7,6 +7,10 @@
   padding: 10px;
   align-content: center;
 }
+.columnInsta {
+	left: 50%;
+    margin-right: -50%;
+}
 .row:after {
   content: "";
   display: table;

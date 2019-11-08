@@ -21,7 +21,7 @@ function Blog() {
 				<h2>Check us out on Instagram</h2>
 				<InstagramEmbed
 				  url='https://www.instagr.am/p/B4S2p2vBE5L'
-				  maxWidth={320}
+				  maxWidth={500}
 				  hideCaption={false}
 				  containerTagName='div'
 				  protocol=''
