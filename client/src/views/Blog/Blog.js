@@ -19,18 +19,18 @@ function Blog() {
 			  </div>
 			  <div class="column">
 				<h2>Check us out on Instagram</h2>
-				<InstagramEmbed
-				  url='https://www.instagr.am/p/B4S2p2vBE5L'
-				  maxWidth={500}
-				  hideCaption={false}
-				  containerTagName='div'
-				  protocol=''
-				  injectScript
-				  onLoading={() => {}}
-				  onSuccess={() => {}}
-				  onAfterRender={() => {}}
-				  onFailure={() => {}}
-				/>
+					<InstagramEmbed
+					  url='https://www.instagr.am/p/B4S2p2vBE5L'
+					  maxWidth={600}
+					  hideCaption={false}
+					  containerTagName='div'
+					  protocol=''
+					  injectScript
+					  onLoading={() => {}}
+					  onSuccess={() => {}}
+					  onAfterRender={() => {}}
+					  onFailure={() => {}}
+					/>
 			  </div>
 			</div>
         </div>
