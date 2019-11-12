@@ -3,7 +3,9 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    exampleRouter = require('../routes/examples.server.routes'),
+    mail = require("../controllers/mail.js");
+
 
 module.exports.init = () => {
     /* 
@@ -25,6 +27,12 @@ module.exports.init = () => {
     // body parsing middleware
     app.use(bodyParser.json());
 
+    app.post("/api/send_email", function (req, res) {
+        mail.request(req, res);
+
+
+
+    });
     // add a router
     app.use('/api/example', exampleRouter);
 
