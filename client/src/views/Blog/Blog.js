@@ -13,7 +13,7 @@ function Blog() {
 				<h2>Check us out on Twitter</h2>
 				<TwitterTimelineEmbed
                 sourceType="profile"
-                screenName="elonmusk"
+                screenName="ForwardGrowth0"
                 options={{ height: 500, width: 500 }}
 				/> 
 			  </div>
