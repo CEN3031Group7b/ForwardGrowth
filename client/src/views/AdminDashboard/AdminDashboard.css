@@ -68,7 +68,7 @@ h1{
     color: white; }
     .Collapsible__trigger:after {
       font-family: 'FontAwesome';
-      content: url("..\..\assets\chevron-down.svg");
+      content: url("..\..\assets\chevrons-down.svg");
       position: absolute;
       right: 10px;
       top: 10px;
@@ -94,7 +94,7 @@ h1{
     }
 
     .myButton{
-        content: url("..\..\assets\chevron-down.svg");
+        content: url("..\..\assets\chevrons-down.svg");
     }
 
     footer { position: fixed; bottom: 0; }
