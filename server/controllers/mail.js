@@ -20,8 +20,8 @@ exports.request = function (req, res) {
                     },
                     "To": [
                         {
-                            "Email": "fowardgrowth@yahoo.com",
-                            "Name": "fowardgrowth"
+                            "Email": req.body.receiver,
+                            "Name": req.body.receiverName
                         }
                     ],
                     "Subject": req.body.subject,

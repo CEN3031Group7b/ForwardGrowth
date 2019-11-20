@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\views",
+    "\\client\\src\\views\\About",
+    "\\client\\src\\views\\Home",
+    "\\server",
+    "\\server\\config",
+    "\\server\\controllers",
+    "\\server\\models"
+  ],
+  "SelectedNode": "\\server\\models\\blog.server.model.js",
+  "PreviewInSolutionExplorer": false
+}
