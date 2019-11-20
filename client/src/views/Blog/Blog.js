@@ -70,7 +70,7 @@ class Blog extends React.Component {
                         <TwitterTimelineEmbed
                             sourceType="profile"
                             screenName="ForwardGrowth0"
-                            options={{ height: 500, width: 500 }}
+                            options={{ height: 840, width: 500 }}
                         />
                     </div>
                     <div class="column2">
