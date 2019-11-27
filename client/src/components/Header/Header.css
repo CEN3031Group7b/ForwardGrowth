@@ -1,3 +1,4 @@
+
 .wrapper {
     /** Top padding so that initially, the content is below the header **/
     padding-top: 100px;
@@ -28,7 +29,10 @@ img.banner {
     left: 36px;
     top: 36px;
   }
-
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: #a90000;
+  }
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
     height: 24px;
@@ -37,7 +41,7 @@ img.banner {
    
   /* Color/shape of close button cross */
   .bm-cross {
-    background: #1f8124;
+    background: #bdc3c7;
   }
   /* General sidebar styles */
 .bm-menu {
@@ -59,12 +63,4 @@ img.banner {
   /*Ensures that the color of a link does not change color once visited*/
 a{
     color: #134e13;
-}
-
-.login{
-  font-family: Tahoma, Geneva, sans-serif; 
-  position: absolute; 
-  top: 20px; 
-  right: 20px;
-  text-decoration: none;
 }
