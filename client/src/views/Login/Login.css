@@ -1,7 +1,22 @@
 .Login form {
     margin: 0 auto;
-    padding: 20px 20px;
-    max-width: 50%;
-    background: rgb(178, 190, 70);
-    box-shadow:rgb(120, 129, 37);
+    max-width: 320px;
+
   }
+
+  h3,
+.h3 {
+  font-family: Tahoma, Geneva, sans-serif;
+  margin-bottom: 0;
+}
+
+.LoginButton{
+    background-color: rgb(160,174,38); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
