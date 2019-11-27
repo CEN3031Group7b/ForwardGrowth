@@ -14,13 +14,16 @@ const Header = () => {
     <div class="wrapper">
       <div class="header" align="center">
         <a href="/Home"><img src={logo} width={'100 px'} alt="logo"></img></a>
+        <a id="login" href="/login" className="login">Login</a>
       </div>
-      
-      <Menu width={'30%'} customBurgerIcon={<img src={menuButton} />}>
+
+
+      <Menu width={'15rem'} customBurgerIcon={<img src={menuButton} />}>
+
         <a id="home" className="menu-item" href="/" style={{ textDecoration: 'none' }}>Home</a>
         <a id="about" className="menu-item" href="/about" style={{ textDecoration: 'none' }}>About</a>
         <a id="contact" className="menu-item" href="/blog" style={{ textDecoration: 'none' }}>Blog</a>
-
+        
       </Menu>
     </div>
 

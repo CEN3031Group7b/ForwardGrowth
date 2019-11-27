@@ -7,6 +7,7 @@ var homeSchema = new Schema({
     company: String,
     payment: String,
     about: String,
+    applink: String,
     created_at: Date,
     updated_at: Date
 });

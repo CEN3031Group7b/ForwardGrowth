@@ -18,7 +18,7 @@ class Login extends React.Component {
 
     //Need to change the below function so that only client can login
     submit(email, password) {
-         //console.log(email, password)
+        //console.log(email, password)
         if (email.length > 0 && password.length > 0) {
             //clear email,pass after login button clicked 
             this.setState({
@@ -39,16 +39,19 @@ class Login extends React.Component {
         return (
             <div className="App" >
                 <div className="Login">
-                    <h1>Login to the Admin Dashboard</h1>
-                    <form id="LoginForm">
+                    <form id="LoginForm">                   
+                     <h1>Login to the Admin Dashboard</h1>
+
                         <h3>Username:</h3> <input name="user"></input>
                         <h3>Password:</h3> <input name="pass"></input>
+                        <br></br>
+                        <button text-align='center' onClick={() => this.submit(
+                            document.getElementById("LoginForm").elements["user"].value,
+                            document.getElementById("LoginForm").elements["pass"].value
+                        )}>Login</button>
                     </form>
                     <br></br>
-                    <button className="LoginButton" onClick={() => this.submit(
-                        document.getElementById("LoginForm").elements["user"].value,
-                        document.getElementById("LoginForm").elements["pass"].value
-                    )}>Login</button>
+
                 </div>
             </div>
         );

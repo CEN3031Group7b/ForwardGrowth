@@ -27,6 +27,34 @@ const listServe = (subject, body) => {
 
 };
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            company: '',
+            payment: '',
+            about: '',
+            applink: '',
+        };
+
+    }
+    componentDidMount() {
+
+        fetch('/api/get_home')
+            .then(res => {
+                return res.text();
+            })
+            .then(res => {
+                var obj = JSON.parse(res);
+
+                this.setState({
+                    company: obj.company,
+                    payment: obj.payment,
+                    about: obj.about,
+                    applink: obj.applink
+                })
+            })
+    }
+
     render() {
         const getUser = (_name, _email) => {
 
@@ -37,10 +65,11 @@ class Home extends React.Component {
             <div className="App">
                 <h1>Home Page</h1>
                 <div className="container-fluid bg-1 text-center">
-                    <h1>Backpack Adventures</h1>
-                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/temple-run/id420009108?mt=8"><img src={app} width={'120 px'} height={'100 px'} alt="App Store"></img></a>
-                </div>
-                <div className="bg-2 text-center">
+                    <a target="_blank" rel="noopener noreferrer" href={this.state.applink}>
+                        <img src ={app} width={'180 px'} height={'150 px'} alt = "App Store"></img>
+                    </a>
+                <div className="container-fluid bg-6 text-center">
+
                     <h1>Features</h1>
                     <h2> Company </h2>
                     <p>
