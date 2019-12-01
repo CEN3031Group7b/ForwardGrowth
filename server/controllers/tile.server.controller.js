@@ -69,7 +69,7 @@ exports.update = function (req, res) {
                 res.json(err);
             res.json(_tile);
         });
-        res.send.status(200).send('{"message":"Team member has been updated"}');
+        res.status(200).send('{"message":"Team member has been updated"}');
     });
 };
 
