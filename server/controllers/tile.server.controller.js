@@ -41,7 +41,7 @@ exports.get = function (req, res) {
             res.status(400).send(err);
         } else {
             console.log(listyBoi);
-            res.send(listyBoi);
+            res.status(200).send(listyBoi);
 
         }
     });
@@ -52,7 +52,7 @@ exports.update = function (req, res) {
     var original = String(req.body.originalname);
     tile.findOne({ name: original }, function (err, _tile) {
         if (err) {
-            res.json("err");
+            res.status(400).send(json("err"));
         }
         
         console.log(req);
@@ -69,7 +69,7 @@ exports.update = function (req, res) {
                 res.json(err);
             res.json(_tile);
         });
-        res.send('{"message":"Team member has been updated"}');
+        res.send.status(200).send('{"message":"Team member has been updated"}');
     });
 };
 
