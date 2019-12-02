@@ -1,30 +1,35 @@
 import React from 'react';
 import './AdminDashboard.css';
 import Collapsible from 'react-collapsible';
+import {Redirect } from 'react-router-dom';
 import TeamCardsAdmin from '../../components/TeamCard/TeamCardsAdmin';
+
 
 
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
 const serveTrigger = <h1>Mailing Page</h1>
+const passwordTrigger = <h1>Change your password</h1>
 const headerTrigger = <h1>Header</h1>
 
 
-const updateInsta = (instagramlink) => {
+
+const updateInsta = (instagramlink, token) => {
     return fetch("/api/update_insta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ instagramlink })
+        body: JSON.stringify({ instagramlink, token })
     }).then(response => response.json());
 };
-const updateHome = (company, payment, about, applink) => {
+const updateHome = (company, payment, about, applink, token) => {
     return fetch("/api/update_home", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ company, payment, about, applink })
+        body: JSON.stringify({ company, payment, about, applink, token })
     }).then(response => response.json());
 };
+
 // const updateTile = (name, position, photo) => {
 //     return fetch("/api/update_tile", {
 //         method: "POST",
@@ -39,17 +44,38 @@ const updateHome = (company, payment, about, applink) => {
 //         body: JSON.stringify({ name })
 //     }).then(response => response.json());
 // };
+
 const addTile = (form) => {
     return fetch("/api/add_tile", {
         method: "POST",
         body: form
     }).then(response => response.json());
 };
-const listServe = (subject, body) => {
+const listServe = (subject, body,token) => {
     return fetch("/api/list_serve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subject, body })
+        body: JSON.stringify({ subject, body, token })
+    }).then(response => response.json());
+
+};
+const logout = (token) => {
+    return fetch("/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token })
+    }).then(response => response.json());
+   
+    
+   
+
+}
+
+const passUpdate = (password, token) => {
+    return fetch("/api/passyBoi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, token})
     }).then(response => response.json());
 
 };
@@ -58,6 +84,15 @@ const addHeader = (form) => {
         method: "POST",
         body: form
     }).then(response => response.json());
+};
+
+const deleteEmailee = (email, token) => {
+    return fetch("/api/removeEmailee", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, token })
+    }).then(response => response.json());
+
 };
 
 
@@ -77,13 +112,14 @@ class AdminDashboard extends React.Component {
 
     }
     componentDidMount() {
+        
 
         fetch('/api/get_home')
             .then(res => {
                 return res.text();
             })
             .then(res => {
-                console.log('My data is' + res)
+                //console.log('My data is' + res)
                 var obj = JSON.parse(res);
 
                 this.setState({
@@ -92,7 +128,7 @@ class AdminDashboard extends React.Component {
                     about: obj.about,
                     applink: obj.applink
                 })
-            })
+            }).catch(err => { console.log(err) })
 
         fetch('/api/instagramlink')
             .then(res => {
@@ -114,13 +150,14 @@ class AdminDashboard extends React.Component {
         })
     }
     onChange2 = e => {
-
         this.setState({
             header: e.target.files,
         })
     }
-
     render() {
+        
+    if(!(localStorage.getItem('token') === 'blah')) {
+
         return (
             <div className="App">
                 <h1>Admin Dashboard</h1>
@@ -160,8 +197,8 @@ class AdminDashboard extends React.Component {
                         <button
                             onClick={() => {
                                 if (this.refs.company.value && this.refs.payment.value && this.refs.about.value && this.refs.applink.value) {
-                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value).then(({ message }) => {
-                                        alert('Home page successfully updated.');
+                                    updateHome(this.refs.company.value, this.refs.payment.value, this.refs.about.value, this.refs.applink.value, localStorage.getItem('token')).then(({ message }) => {
+                                        alert(message);
                                     });
                                 }
                                 else {
@@ -190,7 +227,8 @@ class AdminDashboard extends React.Component {
                                     formData.append('name', this.refs.name.value);
                                     formData.append('position', this.refs.position.value);
                                     formData.append('file', this.state.photo[0]);
-                                    console.log(this.state.photo[0]); //File JSON
+                                    formData.append('token',localStorage.getItem('token'))
+                                    //console.log(this.state.photo[0]); //File JSON
                                     addTile(formData).then(({ message }) => {
                                         alert(message);
                                     });
@@ -199,9 +237,36 @@ class AdminDashboard extends React.Component {
                                     alert("Make sure all entries are completed.");
                                 }
                             }}
+///*                        >
+//                            Add a team member
+//        </button>
+
+//                        <h2>Delete a team member:</h2>
+//                        <form>
+//                            <input type="text" placeholder="Name of member" ref="deleteName" />
+
+//                        </form>
+
+//                        <button
+//                            onClick={() => {
+//                                if (this.refs.deleteName.value) {
+//                                    deleteTile(this.refs.deleteName.value, localStorage.getItem('token')).then(({ message }) => {
+//                                        alert(message);
+//                                    });
+//                                }
+//                                else {
+//                                    alert("Make sure all entries are completed.");
+//                                }
+//                            }}
+//                        >
+//                            Delete a team member
+//        </button>
+//*/
+//DO NOT DELETE COMMENT BLOCK ABOVE FOR ANY REASON
                         >Add a team member</button>
                         <h2>Edit team members:</h2>
-                        <TeamCardsAdmin></TeamCardsAdmin>
+                        <TeamCardsAdmin token={localStorage.getItem('token')} />
+
                     </Collapsible>
                     <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                         <form className="formStyle" id="socialMedia">
@@ -210,7 +275,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.body.value) {
-                                    updateInsta(this.refs.body.value).then(({ message }) => {
+                                    updateInsta(this.refs.body.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -230,7 +295,7 @@ class AdminDashboard extends React.Component {
                         <button className="myButton" type="button"
                             onClick={() => {
                                 if (this.refs.subject.value && this.refs.emailBody.value) {
-                                    listServe(this.refs.subject.value, this.refs.emailBody.value).then(({ message }) => {
+                                    listServe(this.refs.subject.value, this.refs.emailBody.value, localStorage.getItem('token')).then(({ message }) => {
                                         alert(message);
                                     });
                                 }
@@ -238,12 +303,69 @@ class AdminDashboard extends React.Component {
                                     alert("Make sure all entries are completed.");
                                 }
                             }}
-                        >List Serve </button>
-                    </Collapsible>
+                        >
+                            List Serve
+                     </button>
+                        <h3>Enter email of who you want to unsubscribe </h3>
+                        <input type="text" placeholder="Email" ref="emailee"></input>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.emailee.value ) {
+                                    deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            List Serve
+                     </button>
 
+                    </Collapsible>
+                    <Collapsible trigger={passwordTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
+                        <form className="formStyle" id="socialMedia">
+                            <h3>Enter new password</h3>
+                            <input type="text" placeholder="New Password" ref="passy"></input>
+                            
+
+                        </form>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.passy.value) {
+                                    passUpdate(this.refs.passy.value, localStorage.getItem('token')).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Update Password
+                     </button>
+
+                    </Collapsible>
+                    <div>
+                        <button onClick={() => {
+                            logout(localStorage.getItem('token'))
+                            localStorage.setItem('token', 'blah');
+
+                            this.props.history.push('/login')
+                        }}>Logout</button>
+                    </div>
                 </div>
             </div>
-        );
+            );
+        }
+        else {
+            //console.log(localStorage.getItem('token'))
+            this.props.history.push('/login')
+            return null; 
+
+        }
     };
+
 }
 export default AdminDashboard;

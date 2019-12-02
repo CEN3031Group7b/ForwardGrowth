@@ -11,6 +11,6 @@
     "\\server\\controllers",
     "\\server\\models"
   ],
-  "SelectedNode": "\\server\\config",
+  "SelectedNode": "\\client\\src\\views\\AdminDashboard\\AdminDashboard.js",
   "PreviewInSolutionExplorer": false
 }

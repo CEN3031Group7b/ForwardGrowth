@@ -7,39 +7,50 @@ import Login from "./views/Login/Login.js"
 import Header from "./components/Header/Header"
 import AdminDashboard from './views/AdminDashboard/AdminDashboard';
 import NotFound from "./views/NotFound"
-import { AuthContext } from "./context/auth";
 import PrivateRoute from './PrivateRoute';
+import { withRouter } from "react-router-dom";
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
-const App = () => {
+//const App = () => {
+class App extends React.Component {
+
     //const [authority, setAuthority] = useState();
+    constructor(props) {
+        super(props);
+        this.state = {
+            token:'blah'
+        };
 
-    //const setAuth = (data) => {
-    //    localStorage.setItem("tokens", JSON.stringify(data));
-    //    setAuthTokens(data);
-    //}
-    //value  = {.....} right now value = true so the admin page is still accessible 
-    return (
-        <div>
-            
-            <AuthContext.Provider value={true }>
-            
+    }
+    tokenUpdate(value) {
+        this.setState({
+            token: value
+        })
+    }
+    render() {
+        return (
+            <div>
 
-                <Header />
+                
 
-                <Switch>
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/"><Redirect to="/home" /></Route>
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/blog" component={Blog} />
-                    <Route exact path="/login" component={Login} />
-                    <PrivateRoute path="/admin" component={AdminDashboard} />
+                    <Header />
+
+                    <Switch>
+                    <Route exact path="/home" render={(props) => <Home {...props} token={this.state.token} />}/>
+                    <Route exact path="/"><Redirect to="/home" render={(props) => <Home {...props} token={this.state.token} />} /></Route>
+                    <Route exact path="/about" render={(props) => <About {...props} token={this.state.token} />} />
+                    <Route exact path="/blog" render={(props) => <Blog {...props} token={this.state.token} />}/>
+                    <Route exact path="/login" 
+                        render={(props) => <Login {...props} tokenUpdate={this.tokenUpdate.bind(this)} token={this.state.token} />}
+                    />
+                    <Route path="/admin" render={(props) => <AdminDashboard {...props} token={this.state.token} tokenUpdate={this.tokenUpdate.bind(this)} />} />
                     <Route component={NotFound} />
-                </Switch>
-            </AuthContext.Provider>
+                    </Switch>
 
             </div>
-    );
+        );
+    }
 }
-export default App;
+export default withRouter(App);
+

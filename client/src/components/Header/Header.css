@@ -16,6 +16,14 @@
     background-color: rgb(255, 255, 255);
     z-index: 1000
 }
+.button {
+    position: fixed;
+    display: inline-block;
+    text-align: right;
+    right: 36px;
+    top: 36px;
+    z-index: auto;
+}
 
 img.banner {
     margin: 0 auto;
@@ -59,6 +67,8 @@ img.banner {
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+
+
 
   /*Ensures that the color of a link does not change color once visited*/
 a{

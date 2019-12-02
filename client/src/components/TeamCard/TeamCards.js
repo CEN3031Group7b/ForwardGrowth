@@ -1,7 +1,6 @@
 import React from 'react';
 import './TeamCards.css';
 import avatar from '../../assets/img_avatar.png'
-var Jimp = require('jimp')
 const fs = require('fs');
 
 //This file is intended to create a grid of cards pulled from the database
@@ -24,7 +23,7 @@ class TeamCards extends React.Component {
                 this.setState({
                     people: obj
                 })
-            })
+            }).catch(err => { throw (err) })
     }
 
 render() {

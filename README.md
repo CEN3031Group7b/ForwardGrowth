@@ -19,6 +19,9 @@ npm install --save jimp
 
 npm install react-slick --save
 
+npm install password-hash
+
+
 ## Available Scripts
 
 In the project directory, you can run:

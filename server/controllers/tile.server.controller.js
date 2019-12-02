@@ -40,9 +40,8 @@ exports.get = function (req, res) {
 
             res.status(400).send(err);
         } else {
-            console.log(listyBoi);
+            //console.log(listyBoi);
             res.status(200).send(listyBoi);
-
         }
     });
 };

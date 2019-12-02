@@ -49,6 +49,16 @@ exports.listServe = function (req, res) {
         })
     });
 };
+exports.delete = function (req, res) {
+    EmailList.deleteOne({ email: req.body.email }, function (err, emailDeleted) {
+        if (err) {
+            res.status(400).send(err);
+        } else {
+            res.send('{"message":"Successfully deleted '.concat(req.body.email));
+        }
+    });
+
+};
 
 
 
