@@ -309,21 +309,21 @@ class AdminDashboard extends React.Component {
                             >
                                 List Serve
                      </button>
-                            <h3>Enter email of who you want to unsubscribe </h3>
-                            <input type="text" placeholder="Email" ref="emailee"></input>
-                            <button className="myButton" type="button"
-                                onClick={() => {
-                                    if (this.refs.emailee.value) {
-                                        deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
-                                            alert(message);
-                                        });
-                                    }
-                                    else {
-                                        alert("Make sure all entries are completed.");
-                                    }
-                                }}
-                            >
-                                List Serve
+                        <h3>Enter email of who you want to unsubscribe </h3>
+                        <input type="text" placeholder="Email" ref="emailee"></input>
+                        <button className="myButton" type="button"
+                            onClick={() => {
+                                if (this.refs.emailee.value ) {
+                                    deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
+                                        alert(message);
+                                    });
+                                }
+                                else {
+                                    alert("Make sure all entries are completed.");
+                                }
+                            }}
+                        >
+                            Delete Email
                      </button>
 
                         </Collapsible>
@@ -363,7 +363,6 @@ class AdminDashboard extends React.Component {
             );
         }
         else {
-            //console.log(localStorage.getItem('token'))
             this.props.history.push('/login')
             return null;
 
