@@ -169,16 +169,13 @@ class AdminDashboard extends React.Component {
                             <input type="file" onChange={this.onChange2} ref="header" />
                             <button
                                 onClick={() => {
-                                    if (this.state.header = null) alert("Make sure a header image is uploaded.")
-                                    else {
-                                        var headerForm = new FormData();
-                                        headerForm.append('file', this.state.header[0]);
-                                        console.log("Header" + this.state.header[0]); //Object
-                                        console.log("Header Form" + headerForm) //Object
-                                        addHeader(headerForm).then(({ message }) => {
-                                            alert(message);
-                                        });
-                                    }
+                                    var headerForm = new FormData();
+                                    headerForm.append('file', this.state.header[0]);
+                                    console.log("Header" + this.state.header[0]); //Object
+                                    console.log("Header Form" + headerForm) //Object
+                                    addHeader(headerForm).then(({ message }) => {
+                                        alert(message);
+                                    });
                                 }}
                             >Update Header</button>
                         </Collapsible>
@@ -309,21 +306,21 @@ class AdminDashboard extends React.Component {
                             >
                                 List Serve
                      </button>
-                        <h3>Enter email of who you want to unsubscribe </h3>
-                        <input type="text" placeholder="Email" ref="emailee"></input>
-                        <button className="myButton" type="button"
-                            onClick={() => {
-                                if (this.refs.emailee.value ) {
-                                    deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
-                                        alert(message);
-                                    });
-                                }
-                                else {
-                                    alert("Make sure all entries are completed.");
-                                }
-                            }}
-                        >
-                            Delete Email
+                            <h3>Enter email of who you want to unsubscribe </h3>
+                            <input type="text" placeholder="Email" ref="emailee"></input>
+                            <button className="myButton" type="button"
+                                onClick={() => {
+                                    if (this.refs.emailee.value) {
+                                        deleteEmailee(this.refs.emailee.value, localStorage.getItem('token')).then(({ message }) => {
+                                            alert(message);
+                                        });
+                                    }
+                                    else {
+                                        alert("Make sure all entries are completed.");
+                                    }
+                                }}
+                            >
+                                Delete Email
                      </button>
 
                         </Collapsible>
