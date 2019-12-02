@@ -67,14 +67,8 @@ exports.update = function (req, res) {
         _tile.save(function (err) {
             if (err)
                 res.json(err);
-            res.json(_tile);
+            // res.json(_tile);
         });
         res.status(200).send('{"message":"Team member has been updated"}');
     });
 };
-
-
-
-
-
-
