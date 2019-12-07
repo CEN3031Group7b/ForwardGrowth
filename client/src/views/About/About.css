@@ -1,4 +1,6 @@
   .email-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
     align-self: center;
     text-align: center;
     background-color: transparent;
@@ -7,23 +9,50 @@
     margin: 10px auto;
   }
   
-  .email-body {
-    border-top-width: 60px;
-    border-bottom-width: 60px;
+  .email-name {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
     border-left-width: 2px;
     border-right-width: 2px;
     border-color:  #fda55d;
     align-self: center;
     text-align: center;
     background-color: white;
-    width: 50%;
+    width: 35%;
     height: auto;
     margin: 10px auto;
   }
 
+  .email-subject {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-color:  #fda55d;
+    align-self: center;
+    text-align: center;
+    background-color: white;
+    width: 35%;
+    height: auto;
+    margin: 10px auto;
+  }
+
+  .email-body {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-color:  #fda55d;
+    align-self: center;
+    text-align: center;
+    background-color: white;
+    width: 35%;
+    height: 180px;
+    margin: 10px auto;
+  }
+
   .email-button {
-    
-    background-color: rgb(160,174,38); /* Green */
+  background-color: rgb(160,174,38); /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -31,4 +60,6 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  }
+  width: 35%;
+  font-family: Tahoma, Geneva, sans-serif;
+}

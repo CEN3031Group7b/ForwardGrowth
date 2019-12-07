@@ -42,8 +42,8 @@ class Home extends React.Component {
                 return res.text();
             })
             .then(res => {
+                console.log('My data is:' + res);
                 var obj = JSON.parse(res);
-
                 this.setState({
                     company: obj.company,
                     payment: obj.payment,
@@ -57,13 +57,10 @@ class Home extends React.Component {
 
         return (
             <div className="App">
-                {/* <h1>Home Page</h1> */}
-                <h1>Home Page</h1> 
             <h2 class="font_2">
-                <span class="color_11">
                     Backpack Adventurers
-                </span>
             </h2>
+            <br></br>
             {/* <p className="font_7">
             A gaming app that will teach about the fundamentals of budgeting and traveling
             </p> */}
@@ -113,7 +110,7 @@ class Home extends React.Component {
                         <br></br>
 
                     </form>
-                    <button
+                    <button className = "mybutton"
                         onClick={() => {
                             if (this.refs.name.value && this.refs.email.value) {
                                 newEmail(this.refs.name.value, this.refs.email.value).then((message) => {

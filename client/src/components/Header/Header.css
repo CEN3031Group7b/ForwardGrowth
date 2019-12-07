@@ -22,7 +22,11 @@
     text-align: right;
     right: 36px;
     top: 36px;
+    width: 40%;
     z-index: auto;
+    text-decoration: none;
+    color: rgb(143, 155, 35);
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
 img.banner {

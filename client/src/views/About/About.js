@@ -19,30 +19,31 @@ class About extends React.Component {
                 <h1>About the Team</h1>
                 <br></br>
                 <TeamCards></TeamCards>
-                <div className="email-container">
-                    <h2>Contact us </h2>
-                    <form>
-                        <input type="text" placeholder="Your Name" ref="sender" />
-                    </form>
-                    <form>
-                        <input type="text" placeholder="Subject" ref="subject" />
-                    </form>
-                    <form>
-                        <textarea class="email-body" type="text" placeholder="Body" ref="body" />
-                    </form>
-                    <button class="email-button"
-                        onClick={() => {
-                            if (this.refs.sender.value && this.refs.subject.value && this.refs.body.value) {
-                                sendyEmail(this.refs.sender.value, this.refs.subject.value, this.refs.body.value).then(({ message }) => {
-                                    alert(message);
-                                });
-                            }
-                            else {
-                                alert("make sure all entries are completed");
-                            }
-                        }}
-                    >
-                        Send Email
+                
+                        <div className="email-container">
+                        <h1>Contact Us</h1>
+                            <form>
+                                <input class="email-name" type="text" placeholder="Your Name" ref="sender" />
+                            </form>
+                            <form>
+                                <input class="email-subject" type="text" placeholder="Subject" ref="subject" />
+                            </form>
+                            <form>
+                                <textarea class="email-body" type="text" placeholder="Body" ref="body" />
+                            </form>
+                            <button class="email-button"
+                                onClick={() => {
+                                    if (this.refs.sender.value && this.refs.subject.value && this.refs.body.value) {
+                                        sendyEmail(this.refs.sender.value, this.refs.subject.value, this.refs.body.value).then(({ message }) => {
+                                            alert(message);
+                                        });
+                                    }
+                                    else {
+                                        alert("make sure all entries are completed");
+                                    }
+                                }}
+                            >
+                                Send Email
                             </button>
                 </div>
             </div>
