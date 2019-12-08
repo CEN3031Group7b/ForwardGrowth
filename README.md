@@ -5,6 +5,9 @@ This website will be a landing page for "Backpack Adventurers," an application c
 
 *Deploying:*
 Currently the application is deployed on Heroku (https://forwardgrowth.herokuapp.com/). 
+To deploy on Heroku, the "Config Vars" in the settings must be set. 
+To deploy locally, a config.js file should be made in the root with proper environment variables. 
+The following keys must be set: Mongo DB URI, public mailjet key, and the private mailjet key. 
 
 ## Layout and Features:
 ### Home Page:
@@ -63,6 +66,9 @@ npm install password-hash
 npm install --save multer
 
 ## Available Scripts
+**The following text in this section is taken from the README file from the MERN Template used to create this application. The template was provided by the user: @UFWebApps.**
+
+Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. 
 
 In the project directory, you can run:
 

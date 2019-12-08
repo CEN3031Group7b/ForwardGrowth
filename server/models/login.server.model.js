@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 //This Schema stores login information
 
-var loginSchema = new Schema({
+var loginSchema = new Schema({ //Schema for login credentials
     code: Number,
     username: String,
     password: String,
@@ -11,7 +11,7 @@ var loginSchema = new Schema({
     updated_at: Date
 });
 
-loginSchema.pre('save', function (next) {
+loginSchema.pre('save', function (next) { //Throws error if no username or password given
     if (this.username == null)
         throw err;
     if (this.password == null)

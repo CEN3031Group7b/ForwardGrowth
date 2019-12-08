@@ -1,6 +1,7 @@
 import React from 'react';
 
 class NotFound extends React.Component {
+        //Page not found HTML, matches rest of site
         render() {
                 return (
                         <div className="App" >
@@ -9,7 +10,6 @@ class NotFound extends React.Component {
                                         Please make sure you have typed the correct URL.</p>
                         </div>
                 );
-
         }
 }
 

@@ -8,6 +8,7 @@ const fs = require('fs');
 class TeamCards extends React.Component {
     constructor(props) {
         super(props);
+        //The code renders an array of cards
         this.state = {
             people: []
 
@@ -28,10 +29,8 @@ class TeamCards extends React.Component {
 
 render() {
     const cards = this.state.people.map((person,index) => {
-        
-        
-
         return (
+            //HTML for each individual card based off of the "people" map 
             <div key={index} class="card">
                 <img class="fit-picture" src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                 <div class="container">
@@ -41,9 +40,9 @@ render() {
             </div>
         );
     });
+    //This .js file returns the cards grid
         return (
-            <div className="wrapper">
-            
+            <div className="wrapper">     
                 {cards}
             </div>
             
