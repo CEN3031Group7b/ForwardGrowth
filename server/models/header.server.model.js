@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+//This Schema stores Header information
 
 
 var headerSchema = new Schema({

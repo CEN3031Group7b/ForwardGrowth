@@ -1,4 +1,3 @@
-// JavaScript source code
 
 const mailjet = require("node-mailjet").connect(
     process.env.MAILJET_KEY_PUBLIC,
@@ -7,7 +6,7 @@ const mailjet = require("node-mailjet").connect(
 
 
 
-
+//Sends an email using mailjet
 exports.request = function (req, res) {
     const quest = mailjet
         .post("send", { 'version': 'v3.1' })
@@ -15,7 +14,8 @@ exports.request = function (req, res) {
             "Messages": [
                 {
                     "From": {
-                        "Email": "jacobroberge@ufl.edu",
+                        //add an email
+                        "Email": "forwardgrowth1@outlook.com",
                         "Name": req.body.sender
                     },
                     "To": [

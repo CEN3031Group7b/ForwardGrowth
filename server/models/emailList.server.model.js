@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+//This Schema stores subscriber information
 
 var emailListingSchema = new Schema({
     name: String,
