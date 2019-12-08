@@ -4,8 +4,7 @@ import Collapsible from 'react-collapsible';
 import { Redirect } from 'react-router-dom';
 import TeamCardsAdmin from '../../components/TeamCard/TeamCardsAdmin';
 
-
-
+//Trigger messages to be displayed in collapsible menu 
 const homeTrigger = <h1>Home Page</h1>
 const aboutTrigger = <h1>About the Team Page</h1>
 const blogTrigger = <h1>Blog Page</h1>
@@ -13,8 +12,7 @@ const serveTrigger = <h1>Mailing Page</h1>
 const passwordTrigger = <h1>Change your password</h1>
 const headerTrigger = <h1>Header</h1>
 
-
-
+//Requests to update contents of website and render existing text/links that are on the public site for editing purposes. 
 const updateInsta = (instagramlink, token) => {
     return fetch("/api/update_insta", {
         method: "POST",
@@ -30,22 +28,6 @@ const updateHome = (company, payment, about, applink, token) => {
     }).then(response => response.json());
 
 };
-
-// const updateTile = (name, position, photo) => {
-//     return fetch("/api/update_tile", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ name, position, photo })
-//     }).then(response => response.json());
-// };
-// const deleteTile = (name) => {
-//     return fetch("/api/delete_tile", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ name })
-//     }).then(response => response.json());
-// };
-
 const addTile = (form) => {
     return fetch("/api/add_tile", {
         method: "POST",
@@ -107,8 +89,7 @@ class AdminDashboard extends React.Component {
 
     }
     componentDidMount() {
-
-
+        //Showing current texts/links used on/in public site for editing purposes.
         fetch('/api/get_home')
             .then(res => {
                 return res.text();
@@ -139,26 +120,26 @@ class AdminDashboard extends React.Component {
     }
 
     onChange = e => {
-
+        //Used for team member file upload
         this.setState({
             photo: e.target.files,
         })
     }
     onChange2 = e => {
+        //Used for header file upload
         this.setState({
             header: e.target.files,
         })
     }
     render() {
-
-        if (!(localStorage.getItem('token') === 'blah')) {
-
+        if (!(localStorage.getItem('token') === 'blah')) { //checks to see if token exists. Kicks user to login page if not
             return (
                 <div className="App">
                     <h1>Admin Dashboard</h1>
                     <h4>Here you can edit the contents of your website. Make sure to save your changes once you're done editing!</h4>
                     <br></br>
                     <div className="colStyle">
+                        {/* Change header section */}
                         <Collapsible trigger={headerTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <h4>Update the header of the website:</h4>
                             <input type="file" onChange={this.onChange2} ref="header" />
@@ -167,18 +148,19 @@ class AdminDashboard extends React.Component {
                                     if (this.state.header) {
                                         var headerForm = new FormData();
                                         headerForm.append('file', this.state.header[0]);
-                                        console.log("Header" + this.state.header[0]); //Object
-                                        console.log("Header Form" + headerForm) //Object
+                                        console.log("Header" + this.state.header[0]); 
+                                        console.log("Header Form" + headerForm) 
                                         addHeader(headerForm).then(({ message }) => {
                                             alert(message);
                                         });
                                     }
-                                    else{
+                                    else {
                                         alert("Make sure a header image is uploaded.");
                                     }
                                 }}
                             >Update Header</button>
                         </Collapsible>
+                        {/* Update Home Section */}
                         <Collapsible trigger={homeTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="homePage">
                                 <h3><u>Features: </u></h3>
@@ -207,6 +189,7 @@ class AdminDashboard extends React.Component {
                                     }
                                 }}>Update home</button>
                         </Collapsible>
+                        {/* Update About Page section  */}
                         <Collapsible trigger={aboutTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <h2>Add a team member:</h2>
                             <form>
@@ -262,16 +245,17 @@ class AdminDashboard extends React.Component {
                             //                            Delete a team member
                             //        </button>
                             //*/
-                            //DO NOT DELETE COMMENT BLOCK ABOVE FOR ANY REASON
+
                             >Add a team member</button>
                             <h2>Edit team members:</h2>
                             <TeamCardsAdmin token={localStorage.getItem('token')} />
 
                         </Collapsible>
+                        {/* Update Instragram link on blog page  */}
                         <Collapsible trigger={blogTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="socialMedia">
                                 <h3>Link to an Instagram post: </h3> <input type="text" defaultValue={this.state.instagramlink} ref="body"></input>
-                            </form>
+                            </form> {/*Updates instagram link only if token is valid*/}
                             <button className="myButton" type="button"
                                 onClick={() => {
                                     if (this.refs.body.value) {
@@ -285,12 +269,12 @@ class AdminDashboard extends React.Component {
                                 }}
                             >Update Instagram</button>
                         </Collapsible>
+                        {/* Send newsletter section */}
                         <Collapsible trigger={serveTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="socialMedia">
                                 <h3>Send mail to email subscribers </h3>
                                 <input type="text" placeholder="Subject of email" ref="subject"></input>
                                 <textarea type="text" placeholder="Body of email" ref="emailBody"></textarea>
-
                             </form>
                             <button className="myButton" type="button"
                                 onClick={() => {
@@ -306,6 +290,7 @@ class AdminDashboard extends React.Component {
                             >
                                 List Serve
                      </button>
+                     {/* Allowing client to unsubsribe users */}
                             <h3>Enter email of who you want to unsubscribe </h3>
                             <input type="text" placeholder="Email" ref="emailee"></input>
                             <button className="myButton" type="button"
@@ -323,7 +308,8 @@ class AdminDashboard extends React.Component {
                                 Delete Email
                      </button>
 
-                        </Collapsible>
+                        </Collapsible> 
+                        {/*Change password*/}
                         <Collapsible trigger={passwordTrigger} className="headerStyle" transitionTime="10" transitionCloseTime="10">
                             <form className="formStyle" id="socialMedia">
                                 <h3>Enter new password</h3>
@@ -336,7 +322,7 @@ class AdminDashboard extends React.Component {
                                     if (this.refs.passy.value) {
                                         passUpdate(this.refs.passy.value, localStorage.getItem('token')).then(({ message }) => {
                                             alert(message);
-                                        });
+                                        }); {/*Only updates if token is still valid*/ }
                                     }
                                     else {
                                         alert("Make sure all entries are completed.");
@@ -345,18 +331,18 @@ class AdminDashboard extends React.Component {
                             >
                                 Update Password
                      </button>
-
                         </Collapsible>
                     </div>
+                    {/* Logout button */}
                     <div>
-                            <button className="myButton"
+                        <button className="myButton"
                             onClick={() => {
                                 logout(localStorage.getItem('token'))
                                 localStorage.setItem('token', 'blah');
 
                                 this.props.history.push('/login')
                             }}>Logout</button>
-                        </div>
+                    </div>
                 </div>
             );
         }

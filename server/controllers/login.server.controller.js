@@ -16,20 +16,14 @@ genToken = require("../config/express");
             if (err) {
                 res.status(400).send(err);
             } else {
-                res.send('{"message":"Instagram link successfully created."}');
+                res.send('{"message":"Password created."}');
             }
         });
-        //insta_update.findOneAndUpdate({ 'code': 0 }, { 'instagramlink': req.body.instagramlink }, function (err, blog) {
-        //    if (err) {
-        //        res.status(400).send(err);
-        //    } else {
-        //        res.send('{"message":"Instagram link successfully updated."}');
-        //    }
-        //});
+       
   
 };
 exports.login = function (req, res) {
-    login_model.findOne({ 'code': 0 }, function (err, account) {
+    login_model.findOne({ 'code': 0 }, function (err, account) { //Find and validate password
         if (err) {
             console.log(err);
 
@@ -49,7 +43,7 @@ exports.login = function (req, res) {
         }
     });
 }
-exports.passUpdate = function (req, res) {
+exports.passUpdate = function (req, res) {//Hash password and update
     var hashBrowns = require('password-hash');
     var hash = hashBrowns.generate(req.body.password);
 

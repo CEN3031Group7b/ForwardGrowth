@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
 
 
     exports.update = function (req, res) {
-
+        //Below Comment block creates a new instagram listing when run. Keep just in case something happens to the database
         /* Instantiate a Listing */
         //var insta = new insta_update({ code: 0, instagramlink: req.body.instagramlink });
         /* Then save the listing */
@@ -23,10 +23,10 @@ var mongoose = require('mongoose')
             } else {
                 res.send('{"message":"Instagram link successfully updated."}');
             }
-        });
+        });//Update request on AdminDashboard.js
   
 };
-exports.get = function (req, res) {
+exports.get = function (req, res) {//get request on Blog.js
     insta_update.findOne({ 'code': 0 }, function (err, blog) {
         if (err) {
             console.log(err);

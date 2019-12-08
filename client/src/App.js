@@ -14,8 +14,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 //const App = () => {
 class App extends React.Component {
-    
-
     //const [authority, setAuthority] = useState();
     constructor(props) {
         super(props);
@@ -38,11 +36,7 @@ class App extends React.Component {
        
         return (
             <div>
-
-                
-
                     <Header />
-
                     <Switch>
                     <Route exact path="/home" render={(props) => <Home {...props} token={this.state.token} />}/>
                     <Route exact path="/"><Redirect to="/home" render={(props) => <Home {...props} token={this.state.token} />} /></Route>
