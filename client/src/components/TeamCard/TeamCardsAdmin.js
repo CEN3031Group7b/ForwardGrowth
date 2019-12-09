@@ -3,6 +3,7 @@ import './TeamCards.css';
 var Jimp = require('jimp')
 const fs = require('fs');
 
+//requests to update and delete tiles and render existing the existing data of tiles
 const updateTile = (form) => {
     return fetch("/api/update_tile", {
         method: "POST",
@@ -17,6 +18,7 @@ const deleteTile = (_id, name, token) => {
     }).then(response => response.json());
 };
 
+//team cards admin component to use in admin dashboard
 class TeamCards extends React.Component {
     constructor(props) {
         super(props);
@@ -28,25 +30,28 @@ class TeamCards extends React.Component {
             _id: '',
         };
     }
+    //show current data of tiles to later edit
     componentDidMount() {
         fetch('/api/get_tile')
             .then(res => {
                 return res.text();
             })
             .then(res => {
-                //console.log('My data is:' + res);
                 var obj = JSON.parse(res);
                 this.setState({
                     people: obj
                 })
             })
     }
+
+    //used to upload photo
     onChange = e => {
 
         this.setState({
             photo: e.target.files,
         })
     }
+    //set name and position of team member
     setName = e => {
 
         this.setState({
@@ -59,35 +64,31 @@ class TeamCards extends React.Component {
             position: e.target.value,
         })
     }
-    refresh = e => {
-        this.setState(this.state);
-    }
 
 
     render() {
+        //map to each person and put into cards const
         const cards = this.state.people.map((person, index) => {
-
 
             return (
                 <div key={index} class="card">
                     <img class="fit-picture" src={`data:${person.img.contentType};base64,${Buffer.from(person.img.data).toString('base64')}`} alt="" />
                         
                     <div class="container">
+                        {/* display current information in editable text input box */}
                         <h4>Name: </h4> <input type="text" defaultValue={person.name} onChange={this.setName}></input>
                         <h4>Position: </h4> <input type="text" defaultValue={person.position} onChange={this.setPosition}></input>
                         <h4>Replace photo of team member: </h4>
                         <input type="file" onChange={this.onChange} ref="NewPhoto" />
+                        {/* Button to update cards */}
                         <button
                             onClick={() => {
                                 var tileForm = new FormData();
-                                //console.log("New name" + this.state.name);
-                                //console.log("New position" + this.state.position);
-                                //console.log("New Photo" + this.state.photo);
-                                //console.log("ID: " + person._id);
 
+                                // Update forms if the texts/photo are changed
+                                // If not, keep previous data
                                 if (this.state.photo != null) tileForm.append('file', this.state.photo[0]);
                                 else tileForm.append('file', null);
-                                // console.log("Photo" + this.state.photo[0]); //Object
 
                                 if (this.state.name) tileForm.append('name', this.state.name);
                                 else tileForm.append('name', person.name);
@@ -99,9 +100,7 @@ class TeamCards extends React.Component {
                                 tileForm.append('_id', person._id);
                                 tileForm.append('token', localStorage.getItem('token'));
 
-                                //for (var pair of tileForm.entries()) {
-                                //   // console.log(pair[0] + ', ' + pair[1]);
-                                //}
+                                // Updata tile form and reload window
                                 if (tileForm != null) {
                                     updateTile(tileForm).then(({ message }) => {
                                         alert(message);
@@ -115,6 +114,7 @@ class TeamCards extends React.Component {
                         >
                             Update Card
                     </button>
+                        {/* Button to delete cards and reload page */}
                         <button
                             onClick={() => {
                                 if (person.name) {
