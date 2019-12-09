@@ -14,7 +14,6 @@ exports.request = function (req, res) {
             "Messages": [
                 {
                     "From": {
-                        //add an email
                         "Email": "forwardgrowth1@outlook.com",
                         "Name": req.body.sender
                     },

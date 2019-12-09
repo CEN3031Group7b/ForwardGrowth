@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-//This Schema stores Header information
 
 //This file holds the schema for the header image to be stored into the database
 var headerSchema = new Schema({

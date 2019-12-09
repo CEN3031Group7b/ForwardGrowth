@@ -78,26 +78,27 @@ module.exports.init = () => {
         tokenBoi.tokenString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
         tokens.push(tokenBoi);
         return tokenBoi.tokenString;
-    }//Generates sudo random token for login security
+    }//Generates a random token for login security
     var storage = multer.diskStorage({
         destination: './files',
 
         filename: function (req, file, cb) {
             cb(null, file.fieldname + '-' + Date.now())
         }
-    })
+    })//stores a image recieved from client to server
 
     var upload = multer({ storage: storage })
-
+    //Recieve email from the about the team email.
     app.post("/api/send_email", function (req, res) {
         req.body.receiver = 'fowardgrowth@yahoo.com';
         req.body.receiverName = 'forwardgrowth';
         mail.request(req, res);
     });
-
+    //subscribe to list serv
     app.post("/api/add_email", function (req, res) {
         emailList.create(req, res);
     });
+    //list serv to subscribers
     app.post("/api/list_serve", function (req, res) {
         if (checkToken(req.body.token)) {
             emailList.listServe(req, res);
@@ -171,6 +172,7 @@ module.exports.init = () => {
     app.get("/api/get_tile", function (req, res) {
         tileCtrl.get(req, res);
     });
+    //login
     app.post("/api/login", function (req, res) {
         loginCtrl.login(req, res);
     });

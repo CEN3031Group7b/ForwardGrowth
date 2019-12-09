@@ -20,6 +20,7 @@ const updateInsta = (instagramlink, token) => {
         body: JSON.stringify({ instagramlink, token })
     }).then(response => response.json());
 };
+//request server to update Home info
 const updateHome = (company, payment, about, applink, token) => {
     return fetch("/api/update_home", {
         method: "POST",
@@ -28,12 +29,16 @@ const updateHome = (company, payment, about, applink, token) => {
     }).then(response => response.json());
 
 };
+//request server to add a new tile 
+
 const addTile = (form) => {
     return fetch("/api/add_tile", {
         method: "POST",
         body: form
     }).then(response => response.json());
 };
+//request server to list serv 
+
 const listServe = (subject, body, token) => {
     return fetch("/api/list_serve", {
         method: "POST",
@@ -42,6 +47,8 @@ const listServe = (subject, body, token) => {
     }).then(response => response.json());
 
 };
+//request server to inactivate 
+
 const logout = (token) => {
     return fetch("/api/token", {
         method: "POST",
@@ -49,6 +56,7 @@ const logout = (token) => {
         body: JSON.stringify({ token })
     }).then(response => response.json());
 }
+//request server to update password
 const passUpdate = (password, token) => {
     return fetch("/api/passyBoi", {
         method: "POST",
@@ -57,12 +65,14 @@ const passUpdate = (password, token) => {
     }).then(response => response.json());
 
 };
+//request server to add a new header image
 const addHeader = (form) => {
     return fetch("/api/add_header", {
         method: "POST",
         body: form
     }).then(response => response.json());
 };
+//request server to delete a subscriber
 const deleteEmailee = (email, token) => {
     return fetch("/api/removeEmailee", {
         method: "POST",

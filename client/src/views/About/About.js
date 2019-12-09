@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css';
 import TeamCards from '../../components/TeamCard/TeamCards';
-
+// request server to send an email to fowardgrowth@yahoo.com
 const sendyEmail = (sender, subject, body) => {
     return fetch("/api/send_email", {
         method: "POST",

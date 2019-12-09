@@ -2,7 +2,6 @@ const login_model = require('../models/login.server.model.js')
 var mongoose = require('mongoose')
 genToken = require("../config/express");
 
-//mail = require("../controllers/mail.js"),
 
 
 
@@ -29,9 +28,7 @@ exports.login = function (req, res) {
 
             res.status(400).send(err);
         } else {
-            //console.log(account.username);
             var passwordHash = require('password-hash');
-            //passwordHash.verify(req.body.password, account.password)
             if (req.body.username === account.username && passwordHash.verify(req.body.password, account.password)) {
                 var token = genToken.generateToken();
                 res.status(200).send(token);
