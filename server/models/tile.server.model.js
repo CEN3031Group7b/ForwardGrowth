@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
+//This Schema stores information on Tiles
 var tileSchema = new Schema({
     img:
         {data:Buffer, contentType:String},

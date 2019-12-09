@@ -1,6 +1,5 @@
 import './Login.css';
-import React, { useState } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import React from 'react';
 
 
 class Login extends React.Component {
@@ -15,12 +14,10 @@ class Login extends React.Component {
             this.setState({
                 username: ""
             })
-            //console.log(this.state.email, this.state.password,"empty")
-
-            //Redirect
-            //this.props.history.push('/admin')
+            
 
         }
+        // request server to verify login info and create a new login token
         fetch("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -29,7 +26,6 @@ class Login extends React.Component {
             return response.text()
         })
             .then(result => {
-                //console.log(result.status);
 
                 if (!(result === "incorrect")) {
                     localStorage.setItem('token', result);
@@ -38,8 +34,6 @@ class Login extends React.Component {
                     boolie = true;
                 }
                 else {
-                    //this.state.setIsError = true;
-                    //alert("incorrect password or username")
                 }
 
                 if (boolie) {
@@ -56,7 +50,6 @@ class Login extends React.Component {
     }
     //form for the client to login to the admin dashboard. the username and password submitted is sent to the backend to be verified
     render() {
-        //const {  } = this.props;
         return (
             <div className="App" >
                 <div className="Login">

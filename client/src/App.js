@@ -7,7 +7,6 @@ import Login from "./views/Login/Login.js"
 import Header from "./components/Header/Header"
 import AdminDashboard from './views/AdminDashboard/AdminDashboard';
 import NotFound from "./views/NotFound"
-import PrivateRoute from './PrivateRoute';
 import { withRouter } from "react-router-dom";
 
 import { BrowserRouter as Router } from "react-router-dom";
@@ -20,13 +19,14 @@ class App extends React.Component {
         this.state = {
             token:'blah'
         };
-
     }
+    
     tokenUpdate(value) {
         this.setState({
             token: value
         })
     }
+    //When opening this site for the first time token is set to 'blah'
     componentDidMount() {
         if (localStorage.getItem('token') === null) {
             localStorage.setItem('token', 'blah');

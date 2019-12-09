@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 //npm install react-slick --save
 //npm install slick-carousel
 
+//request server to add a new email subscriber
 const newEmail = (name, email) => {
     return fetch("/api/add_email", {
         method: "POST",
@@ -36,7 +37,7 @@ class Home extends React.Component {
 
     }
     componentDidMount() {
-
+        //request server for home info
         fetch('/api/get_home')
             .then(res => {
                 return res.text();

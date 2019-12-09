@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+//This Schema stores login information
 
 var loginSchema = new Schema({ //Schema for login credentials
     code: Number,

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+//This Schema stores Home information
 
 
 var homeSchema = new Schema({

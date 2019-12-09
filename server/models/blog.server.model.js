@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+//This Schema stores Blog information
 
 
 var blogSchema = new Schema({ //Schema for instagram link on blog page

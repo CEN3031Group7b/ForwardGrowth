@@ -1,14 +1,11 @@
 const tile = require('../models/tile.server.model.js')
 var mongoose = require('mongoose')
-//mail = require("../controllers/mail.js"),
 var fs = require('fs');
 
 exports.add = function (req, res) {
-    console.log(req); //Does not print
+    //Create new tile schema with inputted info
     var _tile = new tile({ name: req.body.name, position: req.body.position });
-    //console.log(req.body.photo);
     _tile.img.data = Buffer.from(fs.readFileSync(req.file.path), 'base64');
-    console.log(_tile.img.data)
 
     _tile.img.contentType = 'image/png';
     /* Then save the listing */
@@ -24,6 +21,7 @@ exports.add = function (req, res) {
 };
 
 exports.delete = function (req, res) {
+    //deletes a tile based on id
     tile.deleteOne({ _id: req.body._id }, function (err, tileDeleted) {
         if (err) {
             res.status(400).send(err);
@@ -35,6 +33,7 @@ exports.delete = function (req, res) {
 };
 
 exports.get = function (req, res) {
+    //returns all of the tiles form the database
     tile.find({}, function (err, listyBoi) {
         if (err) {
             console.log(err);
@@ -49,6 +48,7 @@ exports.get = function (req, res) {
 
 
 exports.update = function (req, res) {
+    //updates a tile
     var original = String(req.body.originalname);
     tile.findOne({ _id: req.body._id }, function (err, _tile) {
         if (err) {

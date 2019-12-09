@@ -4,11 +4,8 @@ mail = require("../controllers/mail.js"),
 
 
 
-exports.hello = function(req, res) {
-    res.send('world')
-};
-exports.list = function (req, res) {
-    /* Add your code */
+
+exports.list = function (req, res) {//returns all of the subscribers info
 
     Listing.find({}, null, { sort: { code: 1 } }, function (err, listing) {
         if (err) {
@@ -17,12 +14,11 @@ exports.list = function (req, res) {
         else {
             res.json(listing);
 
-            //console.log(listing);
         }
     });
 };
 
-exports.create = function (req, res) {
+exports.create = function (req, res) {//creates a new listing for a subscriber
 
     /* Instantiate a Listing */
     var emailList = new EmailList({ name: req.body.name, email: req.body.email });
@@ -36,7 +32,7 @@ exports.create = function (req, res) {
     });
 };
 
-exports.listServe = function (req, res) {
+exports.listServe = function (req, res) {//sends an email to to each subscriber
 
     EmailList.find({}, function (err, listyBoi) {
         if (err) throw err;
@@ -49,7 +45,7 @@ exports.listServe = function (req, res) {
         })
     });
 };
-exports.delete = function (req, res) {
+exports.delete = function (req, res) {//delete a subscriber
     EmailList.deleteOne({ email: req.body.email }, function (err, emailDeleted) {
         if (err) {
             res.status(400).send(err);
